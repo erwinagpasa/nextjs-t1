@@ -6,8 +6,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { ItemsModule } from './items/items.module';
+import { TransactionsModule } from './transactions/transactions.module';
 import { User } from './users/user.entity';
 import { Item } from './items/item.entity';
+import { Transaction } from './transactions/transaction.entity';
 
 @Module({
   imports: [
@@ -18,7 +20,7 @@ import { Item } from './items/item.entity';
       username: 'root',
       password: '',
       database: 'nestjs_db',
-      entities: [User, Item],
+      entities: [User, Item, Transaction],
       synchronize: true, // Auto-create tables (disable in production)
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -32,6 +34,7 @@ import { Item } from './items/item.entity';
     }),
     UsersModule,
     ItemsModule,
+    TransactionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
