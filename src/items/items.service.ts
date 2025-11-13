@@ -45,4 +45,21 @@ export class ItemsService {
   findByUserId(userId: string): Item[] {
     return this.items.filter((item) => item.userId === userId);
   }
+
+  create(
+    name: string,
+    description: string,
+    userId: string,
+    price?: number,
+  ): Item {
+    const newItem: Item = {
+      id: String(this.items.length + 1),
+      name,
+      description,
+      userId,
+      price,
+    };
+    this.items.push(newItem);
+    return newItem;
+  }
 }

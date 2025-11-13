@@ -12,6 +12,10 @@ import { ItemsModule } from './items/items.module';
       driver: ApolloDriver,
       autoSchemaFile: true,
       playground: true,
+      introspection: true,
+      subscriptions: {
+        'graphql-ws': true,
+      },
     }),
     UsersModule,
     ItemsModule,
