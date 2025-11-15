@@ -10,6 +10,7 @@ import { TransactionsModule } from './transactions/transactions.module';
 import { User } from './users/user.entity';
 import { Item } from './items/item.entity';
 import { Transaction } from './transactions/transaction.entity';
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
 @Module({
   imports: [
@@ -26,7 +27,8 @@ import { Transaction } from './transactions/transaction.entity';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
-      playground: true,
+      playground: false,
+      plugins: [ApolloServerPluginLandingPageLocalDefault()],
       introspection: true,
       subscriptions: {
         'graphql-ws': true,
